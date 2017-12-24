@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta name = "viewport" content = "width = device-width,initial-scale = 1,maximum-scale = 1,user-scalable = no" />
+    <meta charset="UTF-8" />
+    
+    <title>5704</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/javascripts/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="/javascripts/bootstrap-3.3.7-dist/js/jquery-3.2.0.min.js"></script>
+    <script src="/javascripts/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <style>
+      a:hover{
+        cursor: pointer;
+      }
+      
+    </style>
+   <script>
+   	$(document).ready(function(){
+   		$("#myCarousel").carousel({interval:2000});//每隔秒自动轮播
+   	});
+   	
+   	//为了兼容IE8及之前版本的浏览器  可以通过在标签内设置属性 让后在获取浏览器高度 在把获取的宽度和高度通过添加属性的方法设置为图片的宽高。
+   	var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+   	var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+   	$("#bkg_img").attr("width",width);//为图片添加宽度属性的值
+   	$("#bkg_img").attr("height",height);//为图片添加高度属性的值
+   	$(window).resize(function(){
+   		$("#bkg_img").attr("width",width);
+   		$("#bkg_img").attr("height",height);
+   	});
+	/*$(document).ready(function(){
+   		alert("宽度：" + width + ";" + "高度：" + height);
+   	});*/
+    </script>
+  </head>
+  <body >
+    <div id="nav">
+      <nav class="navbar navbar-inverse" style = "border-radius: 0px;" >
+        <div class = "container">
+          <div class = "navbar-header">
+            <button type = "button" class = "navbar-toggle" data-toggle = "collapse" data-target = "#navbar-collapse-01">
+              <span class = "sr-only">Toggle navigation</span>
+              <span class = "icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class = "navbar-brand" href = "/">我的5704</a>
+          </div>
+          <div id="navbar-collapse-01" class = "collapse navbar-collapse "> 
+              <%  if(loginbean == undefined) {%> 
+                <form class = "navbar-form navbar-right"><!-- 添加表单控制是为了让其与导航栏其他水平对其 -->
+                	<input  type="button" class = "btn btn-success" data-toggle = "modal" data-target = "#signUpModal" value = "新生报名" >&nbsp;&nbsp;&nbsp;
+                  <input  type="button" class = "btn btn-success" data-toggle = "modal" data-target = "#loginModal" value = "登录 / 注册" href = "/users/login">&nbsp;&nbsp;&nbsp;
+                  <input  type="button" class = "btn btn-success" data-toggle = "modal" data-target = "#admLoginModal" value = "管理员登录" >
+                </form>
+                
+             <%} else{%>
+             <ul class = "nav navbar-nav">
+             	<li ><a name = "component" href = "/users/component">元器件管理</a></li>
+             	<li ><a name = "book" href = "/users/book">书籍管理</a></li>
+              	<li ><a name = "money" href = "/users/money">资金管理</a></li>
+              	<li ><a name = "money" href = "/users/signup">新生报名情况</a></li>
+             </ul>
+              <form class = "navbar-form navbar-right">
+                
+                 <span style = "color:#fff;">你好!&nbsp;&nbsp;<%- loginbean.nicheng%></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                 <input type="button" class = "btn btn-success" value = "注销" onclick="javascript:location.href = '/logout'">
+              </form>
+             <%}%>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+
+
+
+<%  if(loginbean == undefined) {%> 
+<div id = "image" >
+ 	<div id = "myCarousel" class = "carousel slide">
+		<ul class = "carousel-indicators">
+			<li data-target = "#myCarousel" data-slide-to = "0" class = "active"></li>
+			<li data-target = "#myCarousel" data-slide-to = "1"></li>
+			<li data-target = "#myCarousel" data-slide-to = "2"></li>
+		</ul>
+		
+		<div class="carousel-inner" style = "margin-top:-30px;">
+			<div class="item active">
+				<img src="../images/1.jpg" alt="one" id = "bkg_img" style = "margin-top: -30px; width:100%;height:100%;" >
+			</div>
+			<div class="item">
+				<img src="../images/2.jpg" alt="2"id = "bkg_img" style = "margin-top: -30px; width:100%;height:100%;">
+			</div>
+			<div class="item">
+				<img src="../images/3.jpg" alt="3" id = "bkg_img" style = "margin-top: -30px; width:100%;height:100%;">
+			</div>
+		</div>
+		<a class="carousel-control left" href="#myCarousel" data-slide="prevent">&lsaquo;</a>
+	    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+	</div>
+	
+</div>
+<% } %> 
+
+
+  
+
+
+
+      
+        

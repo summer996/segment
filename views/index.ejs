@@ -1,0 +1,130 @@
+<%- include header%>
+
+ 
+
+  				 <!-- 模态框 -->
+
+	<div class="modal fade" id="loginModal" style = "width:1480px;">
+	    <div class="modal-dialog">
+	        <div class="modal-content" style = "width:850px;">
+	        <!-- herf内容 -->
+	      
+	        </div>
+	    </div>
+	</div>
+
+	<!-- 管理员模态框 -->
+	 <div class="modal fade" id="admLoginModal">
+	    <div class="modal-dialog">
+	        <div class="modal-content" style = "width:450px;">
+	       		<div style = "height:250px;width:400px;margin:23px;border:1px solid green;">
+				    <form action="/users/admLogin" method="post">
+				      <table class = "table">
+				        <thead>
+				          <tr>
+				            <td colspan="2" align="center">
+				              登录
+				            </td>
+				          </tr>
+				        </thead>
+				        <tbody>
+				          <tr>
+				            <td align="right" >用户名</td>
+				            <td><input type="text" class = "form-control" name = "nicheng"></td>
+				          </tr>
+				          <tr>
+				            <td align="right">密码</td>
+				            <td><input type="password" class = "form-control" name = "admPwd" ></td>
+				          </tr>
+				          <tr>
+				            <td colspan="2" align="center" >
+				              <input type="hidden" name = "subflag" value = "1">
+				              <input type="submit" value="登录" class = "btn btn-success">
+				            </td>
+				          </tr>
+				        </tbody>
+				      </table>
+				    </form>
+  				</div>
+	        </div>
+	    </div>
+	</div> 
+
+	<div class="modal fade" id="signUpModal">
+	    <div class="modal-dialog">
+	        <div class="modal-content" style = "width:450px;">
+	       		<div style = "width:400px;margin:28px;border:1px solid green;">
+				    <form action="/users/signUp" method="post">
+				      <table class = "table">
+				        <thead>
+				          <tr>
+				            <td colspan="2" align="center">
+				              新生报名
+				            </td>
+				          </tr>
+				        </thead>
+				        <tbody>
+				          <tr>
+				            <td align="right" >姓名</td>
+				            <td><input type="text" class = "form-control" name = "nicheng"></td>
+				          </tr>
+				          <tr>
+				            <td align="right">性别</td>
+				            <td><input type="text" class = "form-control" name = "sex" ></td>
+				          </tr>
+				          <tr>
+				            <td align="right">专业</td>
+				            <td><input type="text" class = "form-control" name = "profession" ></td>
+				          </tr>
+				          <tr>
+				            <td align="right">联系方式</td>
+				            <td><input type="text" class = "form-control" name = "tel" ></td>
+				          </tr>
+				          <tr>
+				            <td align="right">QQ</td>
+				            <td><input type="text" class = "form-control" name = "qq" ></td>
+				          </tr>
+				            <tr>
+				            <td align="right">兴趣爱好</td>
+				            <td><input type="text" class = "form-control" name = "interest" ></td>
+				          </tr>
+				          <tr>
+				            <td colspan="2" align="center" >
+				              <input type="hidden" name = "subflag" value = "1">
+				              <input type="submit" value="提交" class = "btn btn-success">
+				              <input type="reset" value="重置" class = "btn btn-defalut">
+				            </td>
+				          </tr>
+				        </tbody>
+				      </table>
+				    </form>
+  				</div>
+	        </div>
+	    </div>
+	</div> 
+
+	
+	
+	<!-- <div id = "myCarousel" class = "carousel slide">
+		轮播指标
+		<ul class = "carousel-indicators">
+			<li data-target = "#myCarousel" data-slide-to = "0" class = "active"></li>
+			<li data-target = "#myCarousel" data-slide-to = "1"></li>
+			<li data-target = "#myCarousel" data-slide-to = "2"></li>
+		</ul>
+		轮播项目
+		<div class="carousel-inner">
+			<div class="item active">
+				<img src="../public/images/1.jpg" alt="1">
+			</div>
+			<div class="item">
+				<img src="./public/images/2.jpg" alt="2">
+			</div>
+			<div class="item">
+				<img src="./public/images/3.jpg" alt="3">
+			</div>
+		</div>
+	</div> -->
+
+	
+<%- include footer%>

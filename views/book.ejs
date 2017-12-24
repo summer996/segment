@@ -1,0 +1,185 @@
+<%- include header%>
+<style>
+  th,td{
+    text-align: center;
+  }
+
+</style>
+
+	<div class = "modal fade" id = "book_borrow"> 
+	 	<div class = "modal-dialog"> 
+	 		<div class = "modal-content" style = "width:450px;"> 
+	 			<button class="close" data-dismiss='modal' style = "padding-right:5px;">×</button>  
+	 			<div style = "border:1px solid green;width:400px;margin:20px;"> 
+	 				<form action = "/users/borrow_books" method = "post" onSubmit = "return check(this);"> 
+	 					<table class = "table"> 
+	 						<tbody> 
+	 							<tr> 
+	 								<td style = "text-align:right;">书名：</td>
+	 								<td><input type = "text" class = "form-control" name = "bname"></td>
+	 							</tr>
+	 							<tr> 
+	 								<td style = "text-align:right;">用户名：</td>
+	 								<td><input type = "text" class = "form-control" name = "name"></td>
+	 							</tr>
+	 							<tr>
+	 								<td style = "text-align:right;">联系方式：</td>
+	 								<td><input type = "text" class = "form-control" name = "tel"></td>
+	 							</tr>
+
+	 							<tr> 
+	 								<td colspan = "2" align = "center">
+	 									<input type = "submit" name = "sure" class = "btn btn-success" value = "确定">
+	 									<input type = "button" name = "info" class = "btn btn-info" value = "查看" data-toggle = "modal" id = "info">
+	 								</td>
+	 							</tr>
+	 						</tbody>
+	 					</table>
+	 				</form>
+	 			</div>
+	 		</div>
+	 	</div>
+ 	</div>
+ 	<div class = "modal fade" id = "infoShow">
+ 		<div class = "modal-dialog"> 
+ 			<div class = "modal-content"> 
+ 				<button class = "close" data-dismiss = "modal" style = "padding-right:5px;">x</button>
+ 				<form action = "/users/borrow_books" method = "post" > 
+	 					<table class = "table">
+	 						<thead> 
+	 							<tr>
+	 								<th>书名</th>
+	 								<th>用户名</th>
+	 								<th>联系方式</th>
+	 							</tr>
+	 						</thead> 
+	 						<tbody id = "book_tbody"> 
+
+	 						</tbody>
+	 					</table>
+	 				</form>		
+ 			</div>
+ 		</div>
+ 	</div>
+ 	<div class = "modal fade" id = "back_book"> 
+	 	<div class = "modal-dialog"> 
+	 		<div class = "modal-content" style = "width:450px;"> 
+	 			<button class="close" data-dismiss='modal' style = "padding-right:5px;">×</button>  
+	 			<div style = "border:1px solid green;width:400px;margin:20px;"> 
+	 				<form action = "/users/back_book" method = "post" > 
+	 					<table class = "table"> 
+	 						<tbody> 
+	 							<tr> 
+	 								<td style = "text-align:right;">书名：</td>
+	 								<td><input type = "text" class = "form-control" name = "bname"></td>
+	 							</tr>
+	 							<tr> 
+	 								<td style = "text-align:right;">用户名：</td>
+	 								<td><input type = "text" class = "form-control" name = "name"></td>
+	 							</tr>
+	 							<tr>
+	 								<td style = "text-align:right;">联系方式：</td>
+	 								<td><input type = "text" class = "form-control" name = "tel"></td>
+	 							</tr>
+
+	 							<tr> 
+	 								<td colspan = "2" align = "center">
+	 									<input type = "submit" name = "sure" class = "btn btn-success" value = "确定">
+	 									<input type = "reset" name = "reset" class = "btn btn-defalut" value = "重置">
+	 								</td>
+	 							</tr>
+	 						</tbody>
+	 					</table>
+	 				</form>
+	 			</div>
+	 		</div>
+	 	</div>
+ 	</div>
+<div name = "bookContent" class="container" >
+      <h4>书籍详情</h4>
+      <table class = "table table-hover table-bordered table-responsive">
+        <thead >
+          <tr>
+            <th>#</th>
+            <th>书名</th>
+            <th>作者</th>
+            <th>数量</th>
+            <th>地址</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id = "tbody-book">
+        </tbody>
+</div>
+ 
+ 
+<script>
+
+function check(form){
+	if(form.name.value == null){
+		alert("请填写完整信息！");
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+$(document).ready(function(){
+    $.get("./bookContent",function(bookContent){
+    	var tbody = document.getElementById("tbody-book");
+          var str = "";
+          //console.log(bookContent.length);
+          for(var i = 0; i < bookContent.length; i++){         
+             str += "<tr>" +
+             "<td>" + (i + 1) + "</td>" +
+             "<td name = 'bname'>" + bookContent[i].bname + "</td>" +
+             "<td>" + bookContent[i].author + "</td>" +
+             "<td name = 'num'>" + bookContent[i].num + "</td>" +
+             "<td>" + bookContent[i].address + "</td>" +
+             "<td> <input type = 'button' class = 'btn btn-success' value = '借书' data-toggle = 'modal' data-target = '#book_borrow'>&nbsp;<input type = 'button' class = 'btn btn-info' value = '还书' data-toggle = 'modal' data-target = '#back_book'>" + 
+             "</td>" +
+            "</tr>";
+          }
+         
+        tbody.innerHTML = str;
+
+      });
+  });
+$("input[name = 'info']").click(function(){
+	var tbody = document.getElementById("book_tbody");
+	$.get("./info_book",function(info_book){
+		var str = "";
+		//console.log(info_book.length);
+		//console.log(info_book);
+		for(var i = 0; i < info_book.length; i++){
+			str += "<tr>" +
+			"<td>" + info_book[i].bname  + "</td>" +
+			"<td>" + info_book[i].name  + "</td>" +
+			"<td>" + info_book[i].tel + "</td>" +
+			"</tr>"
+		}
+		tbody.innerHTML = str;
+	});
+})
+	$(function(){
+		$("#info").click(function(){
+			$("#infoShow").modal("show");
+		});
+	})
+  //书籍信息显示
+
+   function borrow_books(){
+   	var bname = document.getElementsByTagName('bname');
+      	alert("hi");
+      	$.post("./borrow_books",{bname:"fafa"},function(borrow_books){
+      		console.log(borrow_books);
+      	})
+      };
+
+</script>
+ 
+<%- include footer%>
+
+
+

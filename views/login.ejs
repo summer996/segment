@@ -1,0 +1,89 @@
+<div style = "height:350px;background: #fff;" >
+		<div style = "margin:10px 10px;border:1px solid green;width:400px;float:left;">
+			<form action="/users/login" name = "loginForm" method="post">
+				<table class="table">
+					<thead>
+						<tr>
+							<td colspan="2" align="center">登录</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td align="right">姓名:</td>
+							<td><input type="text" name = "email" class = "form-control" placeholder="请填写真实的名字"></td>
+						</tr>
+						<tr>
+							<td align="right">密码：</td>
+							<td><input type="password" name = "pwd" class = "form-control" placeholder="密码"></td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center" valign="middle">
+								<input type= "hidden" name = "subflag" value = "1">
+								<input type="submit" value = "登录" class = "btn btn-success">
+							</td>
+						</tr>
+					</tbody>
+					
+	
+				</table>
+			</form>
+		</div>
+		<div style = "margin:10px 10px;border:1px solid green;width:400px;float: left;">
+			<form action="/users/zhuce" method="post" name = "zhuceForm">
+				<table class = "table">
+					<thead>
+						<tr>
+							<td colspan="2" align="center">注册</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td align="right">姓名:</td>
+							<td><input type="text" class = "form-control" placeholder="请填写真实的名字" name = "email"></td>
+						</tr>
+						<tr>
+							<td align="right">密码：</td>
+							<td><input type="password" class = "form-control" placeholder="密码" name = "pwd" id = "pwd"></td>
+						</tr>
+						<tr>
+							<td align="right">重复密码：</td>
+							<td><input type="password" class = "form-control" placeholder="重复密码" name = "repwd" id = "repwd" onblur="check();"></td>
+							<span id = "warning"></span>
+						</tr>
+						<tr>
+							<td align="right">昵称：</td>
+							<td><input type="text" class = "form-control" placeholder="昵称" name = "nicheng"></td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center" valign="middle">
+								<input type="hidden" name = "subflag" value = "1">
+								<input type="submit" class = "btn btn-success"  value = "注册">
+								<input type="reset" class = "btn btn-success"  value = "重置">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+
+	<script>
+		function check(){
+			if(document.getElementById("pwd").value != document.getElementById("repwd").value){
+				//document.getElementById("warning").innerHTML = "两次输入密码不一致";
+				alert("两次输入密码不一致");
+				return false;
+			}
+			else{
+				//document.getElementById("warning").innerHTML = "";
+				return true;
+			}
+		}
+		/*$("input[name = 'repwd']").onblur(function(){
+			if($("input[name = 'repwd'].val() != input[name = 'pwd'].val()")){
+				alert("两次输入密码不一致！");
+			}
+		});*/
+		
+
+	</script>

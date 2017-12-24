@@ -1,0 +1,49 @@
+<%- include header%>
+<style>
+  th,td{
+    text-align: center;
+  }
+
+</style>
+<div name = "moneyConment" class="container" >
+      <h4>收入支出详情</h4>
+      <table class = "table table-hover table-bordered table-responsive">
+        <thead >
+          <tr>
+            <th>#</th>
+            <th>金额</th>
+            <th>用途</th>
+            <th>时间</th>
+          </tr>
+        </thead>
+        <tbody id = "tbody-money">
+        </tbody>
+</div>
+ 
+ 
+<script>
+$(document).ready(function(){
+    $.get("./moneyContent",function(moneyContent){
+    	var tbody = document.getElementById("tbody-money");
+          var str = "";
+          console.log(moneyContent.length);
+          for(var i = 0; i < moneyContent.length; i++){         
+             str += "<tr>" +
+             "<td>" + (i + 1) + "</td>" +
+             "<td>" + moneyContent[i].amount + "</td>" +
+             "<td>" + moneyContent[i].uses + "</td>" +
+             "<td>" + moneyContent[i].time + "</td>" +
+            "</tr>";
+          }
+         
+        tbody.innerHTML = str;
+
+      });
+  });
+
+</script>
+ 
+<%- include footer%>
+
+
+

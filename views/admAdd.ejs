@@ -1,0 +1,129 @@
+<%- include header.ejs%>
+
+<!--<div style = "height:250px;width:400px;border:1px solid green;">
+    <form action="/users/admLogin" method="post">
+      <table class = "table">
+        <thead>
+          <tr>
+            <td colspan="2" align="center">
+              登录
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="right" >用户名</td>
+            <td><input type="text" class = "form-control" name = "admUser"></td>
+          </tr>
+          <tr>
+            <td align="right">密码</td>
+            <td><input type="password" class = "form-control" name = "admPwd" ></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center" >
+              <input type="hidden" name = "subflag" value = "1">
+              <input type="submit" value="登录" class = "btn btn-success">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+    </div>
+ -->
+
+
+    <div class = "container">
+        <h4 style= "color:lightgreen;font-size: 25px;">书籍信息添加</h4>
+        <form action="/users/bookAdd" method="post">
+           <table class = "table table-hover table-bordered table-responsive">
+             <thead>
+               <tr>
+                 
+                 <th>书名</th>
+                 <th>作者</th>
+                 <th>数量</th>
+                 <th>地址</th>
+                 <th>操作</th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                   <td><input type="text" name = "bname"class = "form-control"></td>
+                   <td><input type="text" name = "author" class = "form-control"></td>
+                   <td><input type="text" name = "num" class = "form-control"></td>
+                   <td><input type="text" name = "address" class = "form-control"></td>
+                   <td>
+                     <input type="submit" class = "btn btn-info btn-small" value = "添加" >
+                     <input type = "reset" class = "btn btn-deafult btn-small" value = "重置">
+                    <!-- <input type="button" class = "btn btn-info" value = "清除" onclick="javascript:location.href = '#'"> -->
+                   </td>
+               </tr>
+             </tbody> 
+          </table>
+        </form>
+       
+    </div>
+    <div class = "container">
+        <h4 style= "color:lightgreen;font-size: 25px;">元器件信息添加</h4>
+        <form action="/users/conponents" method="post">
+          <table class = "table table-hover table-bordered table-responsive">
+            <thead>
+              <tr>
+                
+                <th>器件名称</th>
+                <th>数量</th>
+                <th>地址</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                  <td><input type="text" name = "cname" class = "form-control"></td>
+                  <td><input type="text" name = "num" class = "form-control"></td>
+                  <td><input type="text" name = "address" class = "form-control"></td>
+
+                  <td>
+                    <input type="submit" class = "btn btn-info" value = "添加" >
+                    <input type = "reset" class = "btn btn-deafult" value = "重置">
+                   <!--  <input type="button" class = "btn btn-info" value = "清除" onclick="javascript:location.href = '#'"> -->
+                    
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+        
+    </div>
+    <div class = "container">
+        <h4 style= "color:lightgreen;font-size: 25px;">资金信息添加</h4>
+        <form action="/users/money" method="post">
+          <table class = "table table-hover table-bordered table-responsive">
+            <thead>
+              <tr>
+                
+                <th>金额</th>
+                <th>用途</th>
+                <th>时间</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                  <td><input type="text" name = "amount" class = "form-control"></td>
+                  <td><input type="text" name = "uses" class = "form-control"  placeholder = "使用者/用途"></td>
+                  <td><input type="text" name = "time" class = "form-control"></td>
+
+                  <td>
+                    <input type="submit" class = "btn btn-info" value = "添加" >
+                    <input type = "reset" class = "btn btn-deafult" value = "重置">
+                    <!-- <input type="button" class = "btn btn-info" value = "清除" onclick="javascript:location.href = '#'"> -->
+                    
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+    </div>
+<%- include footer.ejs%>

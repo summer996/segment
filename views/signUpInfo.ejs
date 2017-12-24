@@ -1,0 +1,54 @@
+<%- include header%>
+<style>
+  th,td{
+    text-align: center;
+  }
+
+</style>
+<div name = "moneyConment" class="container" >
+      <h4>新生报名情况</h4>
+      <table class = "table table-hover table-bordered table-responsive">
+        <thead >
+          <tr>
+            <th>#</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>专业</th>
+            <th>联系方式</th>
+            <th>QQ</th>
+            <th>兴趣爱好</th>
+          </tr>
+        </thead>
+        <tbody id = "tbody-signUpInfo">
+        </tbody>
+</div>
+ 
+ 
+<script>
+$(document).ready(function(){
+    $.get("./signUpInfo",function(signUpInfo){
+    	var tbody = document.getElementById("tbody-signUpInfo");
+          var str = "";
+          console.log(signUpInfo.length);
+          for(var i = 0; i < signUpInfo.length; i++){         
+             str += "<tr>" +
+             "<td>" + (i + 1) + "</td>" +
+             "<td>" + signUpInfo[i].nicheng + "</td>" +
+             "<td>" + signUpInfo[i].sex + "</td>" +
+             "<td>" + signUpInfo[i].profession + "</td>" +
+             "<td>" + signUpInfo[i].tel + "</td>" +
+             "<td>" + signUpInfo[i].qq + "</td>" +
+             "<td>" + signUpInfo[i].interest + "</td>" +
+            "</tr>";
+          }
+        tbody.innerHTML = str;
+
+      });
+  });
+
+</script>
+ 
+<%- include footer%>
+
+
+
